@@ -16,8 +16,7 @@ public class InnerJoinOperation<K, V1, V2> implements JoinOperation<DataRow<K, V
 
                 if(dataRow1.getKey() == dataRow2.getKey()){
 
-                    JoinedDataRow<K, V1, V2> joinedDataRow = new JoinedDataRow<>(dataRow1.getKey(), dataRow1.getValue(), dataRow2.getValue());
-                    arrayList.add(joinedDataRow);
+                    arrayList.add(new JoinedDataRow<>(dataRow1.getKey(), dataRow1.getValue(), dataRow2.getValue()));
 
                 }
 
