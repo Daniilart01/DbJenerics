@@ -9,30 +9,22 @@ public class Main {
 
         List<DataRow<Integer, String>> countryArrayList = new ArrayList<>();
         List<DataRow<Integer, String>> cityArrayList = new ArrayList<>();
-        List<InnerJoinOperation<Integer, String, String>> innerJoinArrayList = new ArrayList<>();
+        List<JoinedDataRow<Integer, String, String>> joinedDataRows;
 
         countryArrayList.add(new DataRow<>(0, "Ukraine"));
         countryArrayList.add(new DataRow<>(1, "Germany"));
         countryArrayList.add(new DataRow<>(2, "France"));
 
-        cityArrayList.add(new DataRow<>(0, "Kyiv"));
+        cityArrayList.add(new DataRow<>(0, "Kiev"));
         cityArrayList.add(new DataRow<>(1, "Berlin"));
-        cityArrayList.add(new DataRow<>(2, "Budapest"));
+        cityArrayList.add(new DataRow<>(2, "Paris"));
 
-        InnerJoinOperation<Integer, String, String> innerJoinOperation = new InnerJoinOperation<>();
+        new InnerJoinOperation<Integer, String, String>().join(countryArrayList, cityArrayList);
 
-        innerJoinOperation.join(countryArrayList, cityArrayList);
+        joinedDataRows = (List<JoinedDataRow<Integer, String, String>>) new InnerJoinOperation().join(countryArrayList, cityArrayList);
 
-        innerJoinArrayList.add(innerJoinOperation);
-
-        System.out.println(innerJoinArrayList);
-
-//        List<JoinedDataRow<Integer, String, String>> f2 = (List<JoinedDataRow<Integer, String, String>>) new InnerJoinOperation().join(countryArrayList, cityArrayList);
-
-        for (DataRow<Integer, String> result: countryArrayList) {
-
-            System.out.println(result.getKey() + " " + result.getValue());
-
+        for (JoinedDataRow<Integer, String, String> result: joinedDataRows) {
+            System.out.println(result.getKey() + " " + result.getValue1()+" "+result.getValue2());
         }
 
     }

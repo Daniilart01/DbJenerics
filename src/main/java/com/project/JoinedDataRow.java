@@ -6,16 +6,21 @@ public class JoinedDataRow<K, V1, V2> {
     private V1 value1;
     private V2 value2;
 
-    public void setJoinedDataRow(K key,V1 value1,V2 value2) {
-        this.key = key;
-        this.value1 = value1;
-        this.value2 = value2;
-    }
-
     public JoinedDataRow(K key, V1 value1, V2 value2) {
         this.key = key;
         this.value1 = value1;
         this.value2 = value2;
     }
 
+    public K getKey() {
+        return key;
+    }
+
+    public V1 getValue1() {
+        return value1;
+    }
+
+    public V2 getValue2() {
+        return value2;
+    }
 }
